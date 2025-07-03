@@ -42,5 +42,20 @@ app.MapGet("api/livros/{id}", async ([FromServices] BibliotecaDbContext db, int 
     return livro is not null? Results.Ok(livro): Results.NotFound ("livro nao encontrado");
 });
 
+//Criar o Delete por Id
+
+app.MapDelete("/api/livros/{id}", async ([FromServices] BibliotecaDbContext db, int id) =>
+{
+    var livro = await db.Livros.FindAsync(id);
+    if(livro is null) return Results.NotFound("livro nao encontrado");
+
+    db.Livros.Remove(livro);
+    await db.SaveChangesAsync();
+
+    var text = "Deletado com sucesso";
+    return Results.Ok(text);
+});
+    
+
 
 app.Run();

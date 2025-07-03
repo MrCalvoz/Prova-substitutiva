@@ -19,3 +19,18 @@ GET http://localhost:5231/api/livros
 ### Busca pelo Id
 GET http://localhost:5231/api/livros/1
 
+
+### Atualizar livro
+
+PUT http://localhost:5231/api/livros/1
+
+{
+
+    "titulo": "Livro 3213",
+    "autor" : "Autor 31231",
+    "categoriaId" : "3"
+
+}
+
+### Deletar Livro
+DELETE http://localhost:5231/api/livros/1
