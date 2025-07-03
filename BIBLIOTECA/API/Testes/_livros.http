@@ -1,10 +1,14 @@
 ### Lista de Tarefas
-GET http://localhost:5231
+GET http://localhost:5231/api/livros
 
 ### Cadastrar Tarefa
-POST http://localhost:5231
+POST http://localhost:5231/api/livros
 Content-Type: application/json
 
 {
+
+    "titulo": "Livro 1",
+    "autor" : "Autor 1",
+    "categoriaId" : "1"
 
 }

@@ -9,7 +9,7 @@ public class BibliotecaDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=biblioteca.db");
+        optionsBuilder.UseSqlite("Data Source=caiobiblioteca.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
