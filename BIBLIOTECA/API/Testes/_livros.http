@@ -26,9 +26,9 @@ PUT http://localhost:5231/api/livros/1
 
 {
 
-    "titulo": "Livro 3213",
-    "autor" : "Autor 31231",
-    "categoriaId" : "3"
+    "titulo": "Livro 2",
+    "autor" : "Autor 3",
+    "categoriaId" : "2"
 
 }
 

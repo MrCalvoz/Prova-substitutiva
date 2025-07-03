@@ -42,6 +42,30 @@ app.MapGet("api/livros/{id}", async ([FromServices] BibliotecaDbContext db, int 
     return livro is not null? Results.Ok(livro): Results.NotFound ("livro nao encontrado");
 });
 
+//Criar o PUT
+
+app.MapPut("/api/livros/{id}", async ([FromServices] BibliotecaDbContext db, int id, [FromBody] Livro livroAtualizada)=>
+{
+    var livro = await db.Livros.FindAsync(id);
+    if(livro is null)
+        return Results.NotFound("Livro nao encontrado");
+    if(livroAtualizada.Id != 0 && id != livroAtualizada.Id) {
+        return Results.BadRequest("o ir do url nao corresponde ao id do livro no corpo");
+    }
+
+        livro.Titulo = livroAtualizada.Titulo;
+        livro.CategoriaId = livroAtualizada.CategoriaId;
+
+        await db.SaveChangesAsync();
+
+        var livroSalvoComCategoria = await db.Livros
+            .Include(l => l.Categoria)
+            .FirstOrDefaultAsync(l => l.Id == livro.Id);
+
+            return Results.Ok(livro);
+});
+
+
 //Criar o Delete por Id
 
 app.MapDelete("/api/livros/{id}", async ([FromServices] BibliotecaDbContext db, int id) =>
