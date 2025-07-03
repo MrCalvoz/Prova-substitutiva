@@ -23,5 +23,16 @@ app.MapPost("/api/livros", async ([FromServices] BibliotecaDbContext db, [FromBo
 
 });
 
+//Criar o GET
+
+app.MapGet("/api/livros", async ([FromServices] BibliotecaDbContext db) =>
+{
+
+    return await db.Livros
+        .Include(l=>l.Categoria)
+        .ToListAsync();
+        
+});
+
 
 app.Run();
