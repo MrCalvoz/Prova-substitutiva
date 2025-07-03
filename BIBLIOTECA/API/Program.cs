@@ -34,5 +34,13 @@ app.MapGet("/api/livros", async ([FromServices] BibliotecaDbContext db) =>
         
 });
 
+//Criar o GET por Id
+
+app.MapGet("api/livros/{id}", async ([FromServices] BibliotecaDbContext db, int id)=>
+{
+    var livro = await db.Livros.Include(l => l.Categoria).FirstOrDefaultAsync(l => l.Id == id);
+    return livro is not null? Results.Ok(livro): Results.NotFound ("livro nao encontrado");
+});
+
 
 app.Run();

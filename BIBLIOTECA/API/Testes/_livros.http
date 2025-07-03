@@ -4,13 +4,18 @@ Content-Type: application/json
 
 {
 
-    "titulo": "Livro 1",
-    "autor" : "Autor 1",
-    "categoriaId" : "1"
+    "titulo": "Livro 2",
+    "autor" : "Autor 3",
+    "categoriaId" : "2"
 
 }
 
 
 ### Lista de Tarefas
 GET http://localhost:5231/api/livros
+
+
+
+### Busca pelo Id
+GET http://localhost:5231/api/livros/1
 
